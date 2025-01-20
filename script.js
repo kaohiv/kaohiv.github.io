@@ -29,10 +29,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const isPrime = factors.length === 2;
 
     resultDiv.innerHTML = `
-      <p>Factors of ${number}: ${factors.join(", ")}</p>
+      <p>ตัวประกอบของ ${number}: ${factors.join(", ")}</p>
       <p>${isPrime ? 
-        `<span style="color: green;">${number} is a prime number!</span>` : 
-        `<span style="color: red;">${number} is not a prime number.</span>`
+        `<span style="color: green;">${number} เป็นจำนวนเฉพาะ!</span>` : 
+        `<span style="color: red;">${number} ไม่เป็นจำนวนเฉพาะ.</span>`
       }</p>
     `;
   }
