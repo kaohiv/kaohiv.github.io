@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const number = parseInt(inputValue);
 
     if (isNaN(number) || number <= 0) {
-      resultDiv.innerHTML = <span style="color: red;">Please enter a valid positive number.</span>;
+      resultDiv.innerHTML = <span style="color: red;"> Please enter a valid positive number.</span>;
       return;
     }
 
