@@ -30,7 +30,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     resultDiv.innerHTML = `
       <p>Factors of ${number}: ${factors.join(", ")}</p>
-      <p>${isPrime ? `<span style="color: green;">${number} is a prime number!</span>` : `<span style="color: red;">${number} is not a prime number.</span>`}</p>
+      <p>${isPrime ? 
+        `<span style="color: green;">${number} is a prime number!</span>` : 
+        `<span style="color: red;">${number} is not a prime number.</span>`
+      }</p>
     `;
   }
 });
