@@ -1,39 +1,227 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const findButton = document.getElementById("find-button");
-  const numberInput = document.getElementById("number-input");
-  const resultDiv = document.getElementById("result");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  findButton.addEventListener("click", calculateFactors);
-  numberInput.addEventListener("keypress", (event) => {
-    if (event.key === "Enter") {
-      calculateFactors();
-    }
-  });
+body {
+  font-family: 'Poppins', Arial, sans-serif;
+  background: #1c1c1c;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+}
 
-  function calculateFactors() {
-    const inputValue = numberInput.value.trim();
-    const number = parseInt(inputValue);
+.moving-circle {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: conic-gradient(red, orange, yellow, green, blue, indigo, violet, red);
+  filter: blur(80px);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}
 
-    if (isNaN(number) || number <= 0) {
-      resultDiv.innerHTML = `<span style="color: red;">ใส่แค่ตัวเลขเท่านั้นโว้ยย.</span>`;
-      return;
-    }
+header h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 20px;
+  text-shadow: 0 5px 15px rgba(255, 255, 255, 0.6);
+}
 
-    const factors = [];
-    for (let i = 1; i <= number; i++) {
-      if (number % i === 0) {
-        factors.push(i);
-      }
-    }
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.heart-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-    const isPrime = factors.length === 2;
+.heart {
+  width: 50px;
+  height: 50px;
+  background-color: #ff1e1e;
+  position: relative;
+  transform: rotate(-45deg);
+  animation: heartbeat 1.5s infinite ease-in-out;
+  box-shadow: 0 0 30px rgba(255, 30, 30, 0.8), 0 0 60px rgba(255, 0, 0, 0.5);
+  border-radius: 5px;
+}
 
-    resultDiv.innerHTML = `
-      <p>ตัวประกอบของ ${number}: ${factors.join(", ")}</p>
-      <p>${isPrime ? 
-        `<span style="color: green;">${number} เป็นจำนวนเฉพาะ!</span>` : 
-        `<span style="color: red;">${number} ไม่เป็นจำนวนเฉพาะ.</span>`
-      }</p>
-    `;
+.heart::before,
+.heart::after {
+  content: '';
+  width: 50px;
+  height: 50px;
+  background-color: #ff1e1e;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.heart::before {
+  top: -25px;
+  left: 0;
+}
+
+.heart::after {
+  left: 25px;
+  top: 0;
+  background: radial-gradient(circle at 50% 50%, #ff4d4d, #ff1e1e 60%);
+}
+
+/* Light Reflection Effect */
+.heart::after {
+  background: radial-gradient(circle at 50% 50%, #ff4d4d, #ff1e1e 60%);
+}
+@keyframes heartbeat {
+  0%, 100% {
+    transform: scale(1) rotate(-45deg);
   }
-});
+  30% {
+    transform: scale(1.2) rotate(-45deg);
+  }
+  60% {
+    transform: scale(1) rotate(-45deg);
+  }
+
+}
+
+.input-container {
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 300px;
+  position: relative;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  background-color: #fff;
+  color: #333;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s, box-shadow 0.3s;
+  animation: rainbowBorder 3s infinite linear; /* การเปลี่ยนสีกรอบ */
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3); /* เพิ่มเงาครั้งแรก */
+}
+
+@keyframes rainbowBorder {
+  0% {
+    border-color: red;
+    box-shadow: 0 0 15px red;
+  }
+  14% {
+    border-color: orange;
+    box-shadow: 0 0 15px orange;
+  }
+  28% {
+    border-color: yellow;
+    box-shadow: 0 0 15px yellow;
+  }
+  42% {
+    border-color: green;
+    box-shadow: 0 0 15px green;
+  }
+  57% {
+    border-color: blue;
+    box-shadow: 0 0 15px blue;
+  }
+  71% {
+    border-color: indigo;
+    box-shadow: 0 0 15px indigo;
+  }
+  85% {
+    border-color: violet;
+    box-shadow: 0 0 15px violet;
+  }
+  100% {
+    border-color: red;
+    box-shadow: 0 0 15px red;
+  }
+}
+
+input:focus {
+  outline: none;
+  box-shadow: 0 0 20px rgba(255, 0, 255, 0.8); /* เงารุ้งเมื่อ focus */
+}
+
+.button-container {
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 300px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  background: #333;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+  filter: blur(15px);
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+button:hover::after {
+  opacity: 1;
+}
+
+.result-container {
+  margin-top: 20px;
+  width: 100%;
+  max-width: 300px;
+}
+
+#result {
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: white;
+  text-align: left;
+}
