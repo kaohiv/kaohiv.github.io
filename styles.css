@@ -45,21 +45,6 @@ header h1 {
   align-items: center;
   margin-bottom: 20px;
 }
-
-.image-placeholder {
-  width: 100%;
-  max-width: 300px;
-  height: 150px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #ddd;
-  font-style: italic;
-  font-size: 1rem;
-}
-
 .input-container {
   margin-bottom: 20px;
   width: 100%;
@@ -184,3 +169,4 @@ button:hover::after {
   color: white;
   text-align: left;
 }
+ok
